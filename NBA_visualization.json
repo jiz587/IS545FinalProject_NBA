@@ -6683,7 +6683,8 @@
           "type": "nominal",
           "sort": { "field": "VI", "op": "average", "order": "descending" }
         },
-        "color": { "field": "VI", "type": "quantitative" }
+        "color": { "field": "AGE", "type": "quantitative" }
+        
       }
     },
     {
@@ -6716,7 +6717,8 @@
           "field": "FULL NAME",
           "type": "nominal",
           "sort": { "field": "MIN%", "op": "average", "order": "descending" }
-        }
+        },
+        "color": { "field": "AGE", "type": "quantitative" }
       }
     },
     {
