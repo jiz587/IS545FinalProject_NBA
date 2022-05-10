@@ -6579,8 +6579,8 @@
           ],
 
           "encoding": {
-            "latitude": { "field": "lat" , "type": "quantitative"},
-            "longitude": { "field": "lon" , "type": "quantitative"},
+            "latitude": { "field": "lat", "type": "quantitative" },
+            "longitude": { "field": "lon", "type": "quantitative" },
             "size": {
               "field": "team_size",
               "type": "quantitative",
@@ -6596,7 +6596,7 @@
       ]
     },
     {
-      "width": 1000,
+      "width": 800,
       "height": 400,
       "title": "Team Size test",
 
@@ -6617,12 +6617,16 @@
         "y": {
           "field": "TEAM",
           "type": "nominal",
-          "sort": { "field": "team_size", "op": "average", "order": "descending" }
+          "sort": {
+            "field": "team_size",
+            "op": "average",
+            "order": "descending"
+          }
         }
       }
     },
     {
-      "width": 1000,
+      "width": 800,
       "height": 400,
       "title": "Players Rank with Highest VI in a Team",
       "data": { "name": "player" },
@@ -6668,7 +6672,7 @@
           "filter": { "param": "team", "empty": false }
         }
       ],
-      "mark": {"type": "bar"},
+      "mark": { "type": "bar" },
       "encoding": {
         "x": {
           "field": "VI",
@@ -6679,11 +6683,11 @@
           "type": "nominal",
           "sort": { "field": "VI", "op": "average", "order": "descending" }
         },
-        "color": {"field": "VI", "type": "quantitative"}
+        "color": { "field": "VI", "type": "quantitative" }
       }
     },
     {
-      "width": 1000,
+      "width": 800,
       "height": 400,
       "title": "Players Rank with Minutes Percentage in a Team",
 
@@ -6713,9 +6717,80 @@
           "type": "nominal",
           "sort": { "field": "MIN%", "op": "average", "order": "descending" }
         }
-        
       }
+    },
+    {
+      "data": { "name": "player" },
+      "transform": [
+        {
+          "window": [{ "op": "row_number", "as": "row_number" }]
+        }
+      ],
+      "hconcat": [
+        {
+          "width": 500,
+          "height": 500,
+          "params": [{ "name": "brush", "select": "interval" }],
+          "mark": "point",
+          "encoding": {
+            "x": { "field": "2P%", "type": "quantitative" },
+            "y": { "field": "3P%", "type": "quantitative" },
+            "color": {
+              "condition": {
+                "param": "brush",
+                "field": "AGE",
+                "type": "quantitative"
+              },
+              "value": "grey"
+            }
+          }
+        },
+        {
+          "transform": [
+            { "filter": { "param": "brush" } },
+            { "window": [{ "op": "rank", "as": "rank" }] },
+            { "filter": { "field": "rank", "lt": 25 } }
+          ],
+          "hconcat": [
+            {
+              "width": 110,
+              "title": "Player",
+              "mark": "text",
+              "encoding": {
+                "text": { "field": "FULL NAME", "type": "nominal" },
+                "y": { "field": "row_number", "type": "ordinal", "axis": null }
+              }
+            },
+            {
+              "width": 50,
+              "title": "2P%",
+              "mark": "text",
+              "encoding": {
+                "text": { "field": "2P%", "type": "nominal" },
+                "y": { "field": "row_number", "type": "ordinal", "axis": null }
+              }
+            },
+            {
+              "width": 50,
+              "title": "3P%",
+              "mark": "text",
+              "encoding": {
+                "text": { "field": "3P%", "type": "nominal" },
+                "y": { "field": "row_number", "type": "ordinal", "axis": null }
+              }
+            },
+            {
+              "width": 50,
+              "title": "TEAM",
+              "mark": "text",
+              "encoding": {
+                "text": { "field": "TEAM", "type": "nominal" },
+                "y": { "field": "row_number", "type": "ordinal", "axis": null }
+              }
+            }
+          ]
+        }
+      ]
     }
-    
   ]
 }
