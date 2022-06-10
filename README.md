@@ -9,3 +9,6 @@ This is a side-by-side comparison of the player's versatility index and minutes 
 
 ## Brush selection of 2Point% and 3Point%
 The scatterplot shows the 2Point% and 3Point% of each player. The user can brush select which points they want to view, and the player's information such as their full name, 2Point%, 3Point%, and Team would be shown in the table on the right. The max length of the table is set to be 25 to prevent it being too long. Each data point is also colored according to the player's age, where older players have darker blue. Some players don't have the data of 2Point% and 3Point% because the playoff season is still continuing, and they don't have any 2Point or 3Point attempts as of 05/02/2022 when I accessed the dataset.
+
+
+lol feifei zuikeai 
