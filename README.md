@@ -14,3 +14,5 @@ The scatterplot shows the 2Point% and 3Point% of each player. The user can brush
 
 
 lol feifei zuikeai 
+
+Test for revert message. Should not appear after revert.
